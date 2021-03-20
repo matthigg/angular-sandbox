@@ -1,0 +1,68 @@
+$minRowHeight: 7vh;
+
+.login-form {
+  display: grid;
+  grid-auto-rows: minmax($minRowHeight, auto);
+  grid-gap: 0;
+  & .login-email-field {
+    grid-area: login;
+  }
+  & .login-password-field {
+    grid-area: lpwrd;
+  }
+  & .login-submit-button {
+    grid-area: lsbtn;
+    height: 2rem;
+    width: 5rem;
+  }
+  @media (max-width: 768.99px) {
+    grid-template-areas:
+    ". . login"
+    ". . lpwrd"
+    ". . lsbtn";
+  grid-template-columns: 1fr;
+  }
+  @media (min-width: 768px) {
+    grid-template-areas:
+      "login . ."
+      "lpwrd . ."
+      "lsbtn . .";
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.create-form {
+  display: grid;
+  grid-auto-rows: minmax($minRowHeight, auto);
+  grid-gap: 0;
+  & .create-email-field {
+    grid-area: create;
+  }
+  & .create-password-field {
+    grid-area: cpword;
+  }
+  & .create-password-again-field {
+    grid-area: cpwrda;
+  }
+  & .create-submit-button {
+    grid-area: csmbtn;
+    height: 2rem;
+    width: 10rem;
+  }
+  @media (max-width: 768.99px) {
+    grid-template-areas:
+    ". . create"
+    ". . cpword"
+    ". . cpwrda"
+    ". . csmbtn";
+  grid-template-columns: 1fr;
+  }
+  @media (min-width: 768px) {
+    grid-template-areas:
+      "create . ."
+      "cpword . ."
+      "cpwrda . ."
+      "csmbtn . .";
+    grid-template-columns: repeat(3, 1fr);
+  }
+}

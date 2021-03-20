@@ -2,9 +2,11 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
+import { ReactiveFormsModule } from '@angular/forms';
 
 // Angular Material
 import { MatButtonModule } from '@angular/material/button';
+import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 
 // Components
@@ -26,7 +28,9 @@ import { PageNotFoundComponent } from './components/page-not-found/page-not-foun
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,
+    ReactiveFormsModule,
     MatButtonModule,
+    MatFormFieldModule,
     MatInputModule,
   ],
   providers: [],

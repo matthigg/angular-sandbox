@@ -1,1 +1,50 @@
-<p>login works!</p>
+<h2>Login</h2>
+
+<form class="login-form" [formGroup]="loginForm" (ngSubmit)="onSubmitLogin()">
+  <mat-form-field class="login-email-field">
+    <mat-label>Email:</mat-label>
+    <input matInput formControlName="email">
+  </mat-form-field>
+
+  <mat-form-field class="login-password-field">
+    <mat-label>Password:</mat-label>
+    <input matInput formControlName="password">
+  </mat-form-field>
+
+  <button 
+    class="login-submit-button" 
+    color="primary" 
+    mat-raised-button 
+    type="submit"
+  >
+    Login
+  </button>
+</form>
+
+<h2>Create an Account</h2>
+
+<form class="create-form" [formGroup]="createForm" (ngSubmit)="onSubmitCreate()">
+  <mat-form-field class="create-email-field">
+    <mat-label>Email:</mat-label>
+    <input matInput formControlName="email">
+  </mat-form-field>
+
+  <mat-form-field class="create-password-field">
+    <mat-label>Password:</mat-label>
+    <input matInput formControlName="password">
+  </mat-form-field>
+
+  <mat-form-field class="create-password-again-field">
+    <mat-label>Password (again):</mat-label>
+    <input matInput formControlName="passwordAgain">
+  </mat-form-field>
+
+  <button 
+    class="create-submit-button" 
+    color="primary" 
+    mat-raised-button 
+    type="submit"
+  >
+    Create an Account
+  </button>
+</form>
