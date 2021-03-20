@@ -1,11 +1,15 @@
 <h2>Login</h2>
 
+<!-- Form: Login -->
 <form class="login-form" [formGroup]="loginForm" (ngSubmit)="onSubmitLogin()">
+
+  <!-- Field: Email -->
   <mat-form-field class="login-email-field">
     <mat-label>Email:</mat-label>
     <input matInput formControlName="email">
   </mat-form-field>
 
+  <!-- Field: Login Password -->
   <mat-form-field class="login-password-field">
     <mat-label>Password:</mat-label>
     <input matInput formControlName="password">
@@ -16,6 +20,7 @@
     color="primary" 
     mat-raised-button 
     type="submit"
+    [disabled]="!loginForm.valid"
   >
     Login
   </button>
@@ -23,20 +28,44 @@
 
 <h2>Create an Account</h2>
 
+<!-- Form: Create an Account -->
 <form class="create-form" [formGroup]="createForm" (ngSubmit)="onSubmitCreate()">
+
+  <!-- Field: Email -->
   <mat-form-field class="create-email-field">
     <mat-label>Email:</mat-label>
     <input matInput formControlName="email">
+    <mat-error *ngIf="createForm?.get('email')?.errors?.required">Email is required</mat-error>
+    <mat-error *ngIf="createForm?.get('email')?.errors?.email">Email format is invalid</mat-error>
   </mat-form-field>
 
+  <!-- Field: Create a Password -->
   <mat-form-field class="create-password-field">
     <mat-label>Password:</mat-label>
     <input matInput formControlName="password">
+    <mat-error *ngIf="createForm?.get('password')?.value === ''; else passwordMinLengthError">
+      Password is required
+    </mat-error>
+    <ng-template #passwordMinLengthError>
+      <mat-error>Password must be at least 6 characters long</mat-error>
+    </ng-template>
   </mat-form-field>
 
+  <!-- Field: Create a Password (again) -->
   <mat-form-field class="create-password-again-field">
     <mat-label>Password (again):</mat-label>
     <input matInput formControlName="passwordAgain">
+    <mat-error>
+      <span *ngIf="createForm?.get('passwordAgain')?.value === ''">
+        Password (again) is required
+      </span>
+      <span *ngIf="
+        createForm?.get('passwordAgain')?.value !== '' &&
+        createForm?.get('passwordAgain')?.errors?.passwordMismatch === true
+      ">
+        Passwords do not match
+      </span>
+    </mat-error>
   </mat-form-field>
 
   <button 
@@ -44,7 +73,9 @@
     color="primary" 
     mat-raised-button 
     type="submit"
+    [disabled]="!createForm.valid"
   >
+
     Create an Account
   </button>
 </form>
