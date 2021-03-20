@@ -34,11 +34,7 @@ export class LoginComponent implements OnInit {
   }
 
   checkPasswordsMatch(formGroup: FormGroup): ValidatorFn {
-    return (formControl: any): any => {
-
-      console.log('--- formGroup:', formGroup)
-      console.log('--- formControl:', formControl)
-      
+    return (abstractControl: AbstractControl): {[key: string]: any} | null => {
       const match = this.createForm?.get('password')?.value === this.createForm?.get('passwordAgain')?.value;
       return match ? null : { passwordMismatch: true };
     }
